@@ -1,29 +1,64 @@
-TODO: Check the instructions, then delete this text.
-<!-- 🐨 Create (in HTML) an <html> with a <body> with a <div> with the id of "root" -->
+<html>
+	<head>
+		<title>Hello World - React Fundamentals</title>
+		<style>
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+				margin: 0;
+				padding: 20px;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.container {
+				background: white;
+				padding: 2rem;
+				border-radius: 10px;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+				text-align: center;
+				font-size: 2rem;
+				color: #333;
+				animation: fadeIn 0.5s ease-in;
+			}
+			@keyframes fadeIn {
+				from { opacity: 0; transform: translateY(20px); }
+				to { opacity: 1; transform: translateY(0); }
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root"></div>
 
-<!-- 🐨 Then create a <script type="module"> for your JavaScript -->
-<!--	 📜 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attributes -->
-<!--	 📜 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules -->
-<!--	 📜 https://github.com/mdn/js-examples/tree/master/module-examples -->
+		<script type="module">
+			// Get the root element from the DOM
+			const rootElement = document.getElementById('root')
+			
+			// Create a new div element
+			const element = document.createElement('div')
+			
+			// Set the div's className to 'container'
+			element.className = 'container'
+			
+			// Set the div's textContent to 'Hello World'
+			element.textContent = 'Hello World! 🚀'
+			
+			// Append the div to the root element
+			rootElement.append(element)
 
-<!-- These next instructions are to be written in JavaScript in the <script> tag -->
-
-<!-- 🐨 Get the root div using the JavaScript DOM API -->
-<!--	 💰 Hint, you'll use: document.getElementById('root') -->
-<!--	 📜 https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById -->
-
-<!-- 🐨 Create a div with the JavaScript DOM API: -->
-<!--	 💰 Hint, you'll use: document.createElement('div') -->
-<!--	 📜 https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement -->
-
-<!-- 🐨 Set the div's className property to 'container' -->
-<!--	 💰 element.className = '...' -->
-<!--   📜 https://developer.mozilla.org/en-US/docs/Web/API/Element/className -->
-
-<!-- 🐨 Set the div's textContent to 'Hello World' -->
-<!--	 💰 element.textContent = '...' -->
-<!--	 📜 https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent -->
-
-<!-- 🐨 Append the div to the root div using `append` -->
-<!--	 💰 root.append(div) -->
-<!--	 📜 https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append -->
+			// Add some interactivity for fun
+			element.addEventListener('click', () => {
+				const messages = [
+					'Hello World! 🚀',
+					'Welcome to React! ⚛️',
+					'Learning is fun! 📚',
+					'Keep coding! 💻',
+					'You got this! 💪'
+				]
+				const randomMessage = messages[Math.floor(Math.random() * messages.length)]
+				element.textContent = randomMessage
+			})
+		</script>
+	</body>
+</html>

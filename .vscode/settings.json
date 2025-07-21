@@ -1,0 +1,44 @@
+{
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": true,
+	"files.eol": "\n",
+	"typescript.preferences.useAliasesForRenames": false,
+	"typescript.suggest.autoImports": true,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"emmet.includeLanguages": {
+		"typescript": "html",
+		"typescriptreact": "html"
+	},
+	"files.associations": {
+		"*.mdx": "markdown"
+	},
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	"typescript.inlayHints.parameterNames.enabled": "all",
+	"typescript.inlayHints.variableTypes.enabled": true,
+	"typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+	"editor.bracketPairColorization.enabled": true,
+	"editor.guides.bracketPairs": true,
+	"workbench.colorCustomizations": {
+		"editorBracketHighlight.foreground1": "#FFD700",
+		"editorBracketHighlight.foreground2": "#DA70D6",
+		"editorBracketHighlight.foreground3": "#87CEEB"
+	},
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/dist": true,
+		"**/build": true,
+		"**/.git": true
+	},
+	"files.watcherExclude": {
+		"**/node_modules/**": true,
+		"**/dist/**": true,
+		"**/build/**": true
+	}
+} 
