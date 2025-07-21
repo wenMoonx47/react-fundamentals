@@ -1,0 +1,69 @@
+# Forms
+
+<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/intro-to-forms" />
+
+In React, there actually aren't a ton of things you have to learn to interact
+with forms beyond what you can do with regular DOM APIs and JavaScript. Which I
+think is pretty awesome.
+
+You can attach a submit handler to a form element with the `onSubmit` prop. This
+will be called with the submit event which has a `currentTarget`. That
+`currentTarget` is a reference to the `<form>` DOM node which has a reference to
+the elements of the form which can be used to get the values out of the form!
+
+You can also use this to create an instance of a
+[`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) object
+which is the standard object for representing form data in JavaScript.
+
+The interesting thing about forms is that they have been around since the very
+beginning of the web when expectations of web applications were a little
+different from the expectations of modern applications. Specifically, full-page
+refreshes were the norm.
+
+So, when you submit a form, the browser will do a full-page refresh by default.
+This is not what we want in a modern application where we want to stay on the
+same page and just update the UI (even if we update the URL). It's inefficient
+(the browser has to re-process HTML, CSS, and JS with every refresh) and
+annoying for users to do a full-page refresh on every navigation and interaction
+(imagine if you had a full page refresh when you like post on 𝕏!). So you can
+prevent that behavior using JavaScript and the `onSubmit` event handler on the
+form.
+
+```tsx
+<form
+	onSubmit={event => {
+		event.preventDefault() // prevent the default browser behavior
+		const formData = new FormData(event.currentTarget)
+		// do something with the form data
+	}}
+>
+	{/* form fields go here */}
+</form>
+```
+
+This is so common, React provides a built-in way to handle form actions which
+we'll explore in this exercise.
+
+Form fields also should be labeled appropriately as well to make them accessible
+to screen readers and improve the overall user experience as well. There are a
+few ways to do this. The easiest being to wrap the input within the label:
+
+```tsx
+<label>
+	Name
+	<input name="name" type="text" />
+</label>
+```
+
+But often our design requirements don't allow for that. In that case, we can use
+the `htmlFor` prop on the label to associate it with the input:
+
+```tsx
+<label htmlFor="nameInput">Name</label>
+<input id="nameInput" name="name" type="text" />
+```
+
+<callout-info class="aside">
+	As a reminder, in HTML the attribute is called `for`, but the DOM property is
+	`htmlFor` so that's what we use in React's props.
+</callout-info>

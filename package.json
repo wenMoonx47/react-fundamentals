@@ -1,0 +1,70 @@
+{
+  "name": "react-fundamentals",
+  "private": true,
+  "epicshop": {
+    "title": "React Fundamentals ⚛",
+    "githubRoot": "https://github.com/epicweb-dev/react-fundamentals/blob/main",
+    "subtitle": "Learn the foundational concepts necessary for building React applications and libraries",
+    "stackBlitzConfig": {
+      "view": "editor"
+    },
+    "product": {
+      "host": "www.epicreact.dev",
+      "slug": "react-fundamentals",
+      "displayName": "EpicReact.dev",
+      "displayNameShort": "Epic React",
+      "logo": "/logo.svg",
+      "discordChannelId": "1285244676286189569",
+      "discordTags": [
+        "1285246046498328627",
+        "1285245484432228375"
+      ]
+    },
+    "onboardingVideo": "https://www.epicweb.dev/tips/get-started-with-the-epic-workshop-app-for-react",
+    "instructor": {
+      "name": "Kent C. Dodds",
+      "avatar": "/images/instructor.png",
+      "𝕏": "kentcdodds"
+    }
+  },
+  "type": "module",
+  "imports": {
+    "#*": "./*"
+  },
+  "prettier": "@epic-web/config/prettier",
+  "scripts": {
+    "postinstall": "cd ./epicshop && npm install",
+    "start": "npx --prefix ./epicshop epicshop start",
+    "dev": "npx --prefix ./epicshop epicshop start",
+    "setup": "node ./epicshop/setup.js",
+    "setup:custom": "node ./epicshop/setup-custom.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc -b",
+    "validate:all": "npm-run-all --parallel --print-label --print-name --continue-on-error lint typecheck"
+  },
+  "keywords": [],
+  "author": "Kent C. Dodds <me@kentcdodds.com> (https://kentcdodds.com/)",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-error-boundary": "^4.1.2"
+  },
+  "devDependencies": {
+    "@epic-web/config": "^1.16.3",
+    "@epic-web/workshop-utils": "^6.16.8",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.16.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20",
+    "npm": ">=8.16.0",
+    "git": ">=2.18.0"
+  }
+}

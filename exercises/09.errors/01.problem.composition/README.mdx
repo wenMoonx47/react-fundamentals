@@ -1,0 +1,25 @@
+# Composition
+
+<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/composition" />
+
+👨‍💼 You'll notice that right now our onboarding form isn't showing up at all.
+That's because someone made a typo... But errors like this could happen for any
+number of reasons (data issue, API version change, network error, etc.). So we
+should definitely handle errors in our app.
+
+Let's start by wrapping our existing `App` component in an Error Boundary to
+handle any errors. We're going to have you use the `FallbackComponent` prop on
+the `ErrorBoundary` so we can define our own `ErrorFallback` component.
+
+```tsx
+<ErrorBoundary FallbackComponent={ErrorFallback}>{/*...*/}</ErrorBoundary>
+```
+
+Right now we have an `App` component which we render using
+`createRoot(rootEl).render(<App />)`, so to get our stuff wrapped
+properly, we'll rename our existing `App` component (call it `OnboardingForm`) and
+then make a new `App` which renders the `ErrorBoundary` around the `OnboardingForm`
+component along with our `FallbackComponent` called `ErrorFallback` (which you
+also have to create).
+
+Get to it!
