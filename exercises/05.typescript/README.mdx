@@ -1,0 +1,135 @@
+# TypeScript
+
+<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/intro-to-typescript" />
+
+TypeScript is an enormously valuable team productivity, code quality, and
+confidence tool that I strongly recommend you use to build any React application
+you plan making maintainable. As you're working with TypeScript and getting
+angry at all the red squiggles it puts in your code, keep this in mind:
+
+> TypeScript is not making your life terrible. It's just showing you how
+> terrible your life already is. – [Kent C. Dodds](https://twitter.com/kentcdodds/status/1763606063394496633)
+
+You can think of TypeScript as that
+[brutally honest friend](https://twitter.com/kentcdodds/status/1715562350835855396)
+who isn't afraid to tell you about the spinach in your teeth. It's not the
+friend's fault that you've got spinach in your teeth. It's your fault. You
+should be thanking TypeScript, not cursing it.
+
+Remember, in exercise 4 we learned
+[what a React component](https://twitter.com/kentcdodds/status/1763606427028136131)
+is:
+
+> Components are functions which accept an object called "props" and return
+> something that is renderable
+
+Because of this, they don't require any special considerations when applying
+TypeScript type annotations to them. You treat React component functions the
+same way you treat regular functions. Because of this, the major battle for
+folks using TypeScript with React is:
+
+1. Improving their TypeScript skills
+2. Learning the React-specific types available
+
+📜 I advise having the
+[React+TypeScript Cheatsheets](https://github.com/typescript-cheatsheets/react)
+repo open as a reference while you're getting used to using TypeScript and
+React. Another terrific resource is
+[Total TypeScript](https://www.totaltypescript.com/) which has a lot of great
+free resources which go much deeper than we do in this exercise.
+
+With that said, here's a quick intro to adding type annotations to functions:
+
+```tsx
+// here's a regular JS function that accepts a user
+// which might have a name property
+function getName(user) {
+	return user.name ?? 'Unknown'
+}
+
+// here's how you'd type that user object to say it has an optional name property:
+type User = { name?: string }
+
+// and here's how you'd tell TypeScript that the user parameter is a User object
+function getName(user: User) {
+	return user.name ?? 'Unknown'
+}
+
+// and if you'd like to, you can specify the return type explicitly as well
+// (though it is inferred):
+function getName(user: User): string {
+	return user.name ?? 'Unknown'
+}
+```
+
+📜 Learn more about the syntax for functions in TypeScript here:
+[TypeScript Function Syntaxes](https://kentcdodds.com/blog/typescript-function-syntaxes)
+
+Let's look at a quick example of adding TypeScript to a simple (and familiar)
+React component:
+
+```tsx
+function Message(props) {
+	return <div className="message">{props.children}</div>
+}
+
+// We could say:
+type MessageProps = { children: string }
+function Message(props: MessageProps) {
+	return <div className="message">{props.children}</div>
+}
+// that would allow: <Message>Hello World</Message>
+// but not: <Message><span>Hello</span> <span>World</span></Message>
+
+// The React types have a ReactNode, which is the recommended choice for the children prop:
+type MessageProps = { children: React.ReactNode }
+function Message(props: MessageProps) {
+	return <div className="message">{props.children}</div>
+}
+
+// keep in mind that you don't *have* to give your props a name.
+// You can inline them as well. This works just the same as above:
+function Message(props: { children: React.ReactNode }) {
+	return <div className="message">{props.children}</div>
+}
+
+// and you can destructure as well (this is what I do most of the time):
+function Message({ children }: { children: React.ReactNode }) {
+	return <div className="message">{children}</div>
+}
+
+// mix-and-match:
+type MessageProps = { children: React.ReactNode }
+function Message({ children }: MessageProps) {
+	return <div className="message">{children}</div>
+}
+```
+
+📜 Learn more about typing React components here:
+[How to write a React Component in TypeScript](https://kentcdodds.com/blog/how-to-write-a-react-component-in-typescript)
+
+🦉 It's great to have your code type checked, but not at the expense of
+progressing and learning. If you get totally stuck on something, then I suggest
+you tell TypeScript to quiet down and come back to it later when you're more
+experienced or want to focus on it. You can do this like so:
+
+```typescript
+// @ts-expect-error TypeScript is complaining about this next line.
+// Something about magic not existing.
+// I don't know how to fix this right now and AI Assistants were unhelpful...
+// Come back later.
+make.magic()
+```
+
+Don't worry if you struggle with TypeScript at first, the more you use it, the
+better you'll get at it, just like anything else.
+
+<callout-info>
+	Note: We're moving from the `*.html` files to `*.tsx` files. This is more
+	real-world and also your editor likely supports TypeScript better within
+	TypeScript files rather than HTML files. From here on out, the `index.tsx`
+	file will be loaded onto the page automatically. We'll also get live reload of
+	the browser as we save changes which will be quite nice. The workshop app is a
+	little magical, but you'll find `createRoot(rootElement).render(element)`
+	calls in each of the files, just like we were doing in the previous exercises.
+</callout-info>

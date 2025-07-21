@@ -1,0 +1,9 @@
+{
+	"include": ["**/*.ts", "**/*.tsx"],
+	"extends": ["@epic-web/config/typescript"],
+	"compilerOptions": {
+		"paths": {
+			"#*": ["./*"]
+		}
+	}
+}
