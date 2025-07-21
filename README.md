@@ -1,7 +1,7 @@
 <div>
   <h1 align="center"><a href="https://www.epicweb.dev/workshops">React Fundamentals ⚛</a></h1>
   <strong>
-    Learn the fundamental React features necessary for building applications and libraries
+    Learn the fundamental React features necessary for building applications and libraries, utilities
   </strong>
   <p>
     Learn everything you need to be effective with the fundamental building blocks of React applications. When you're finished, you'll understand how to create React components, handle errors, create form elements, and more.
